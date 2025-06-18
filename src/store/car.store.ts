@@ -17,14 +17,17 @@ const createCar = (data: Omit<Car, 'id' | 'createdAt' | 'updatedAt'>): Car => {
   cars.set(id, car);
   return car;
 };
+
 // get all cars from the map
 const getAllCars = (): Car[] => {
   return Array.from(cars.values());
 };
+
 // get car by id from the map
 const getCarByID = (id: string): Car | undefined => {
   return cars.get(id);
 };
+
 // update car by id in the map
 const updateCar = (
   id: string,
@@ -50,17 +53,17 @@ const deleteCar = (id: string): boolean => {
 
 // get cars by dealerId
 const getCarsByDealerId = (dealerId: string): Car[] => {
-  return Array.from(cars.values()).filter((car) => car.dealerId === dealerId);
+  return getAllCars().filter((car) => car.dealerId === dealerId);
 };
 // get cars by carMakerId
 const getCarsByCarMakerId = (carMakerId: string): Car[] => {
-  return Array.from(cars.values()).filter(
+  return getAllCars().filter(
     (car) => car.carMakerId === carMakerId
   );
 };
 // get cars by dealerId and carMakerId
 const getCarsFiltered = (dealerId: string, carMakerId: string): Car[] => {
-  return Array.from(cars.values()).filter(
+  return getAllCars().filter(
     (car) => car.dealerId === dealerId && car.carMakerId === carMakerId
   );
 };
